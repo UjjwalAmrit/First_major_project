@@ -1,0 +1,56 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+	<div class="col-8 offset-2">
+		<br><br>
+	<h3>Edit your Listing : <%= listing._id %></h3>
+	<form method="post" action="/listings/<%= listing._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+		<div class="mb-3">
+			<label for="title" class="form-label">Title</label>
+			<input name = "listing[title]" value="<%= listing.title %>" type="text" id="title" class="form-control"required></input>
+			<div class="valid-feedback">Title looks good!</div>
+		</div>
+		
+		<div class="mb-3">
+			<label for="description" class="form-label">Description</label>
+			<textarea name="listing[description]" id="description" class="form-control" cols="30" rows="10" required><%= listing.description %></textarea>
+			<div class="invalid-feedback">Description must be defined briefly</div>
+		</div>
+		
+		<div class="mb-3">
+			Original Listing Image<br>  
+			<img src="<%= originalImageUrl %>">
+		</div>
+
+		<div class="mb-3">
+			<label for="image" class="form-label">Upload new image</label>
+			<input name = "listing[image]" type="file" id="image" class="form-control"></input>
+		</div>
+		
+		<div class="row">
+			<div class="mb-3 col-md-4">
+				<label for="price" class="form-label">Price</label>
+				<input value="<%= listing.price %>" name = "listing[price]" type="number" class="form-control" id="price" required></input>
+				<div class="invalid-feedback">Price should be valid.</div>
+			</div>
+
+			<div class="mb-3 col-md-8">
+				<label for="country" class="form-label">Country</label>
+				<input value="<%= listing.country %>" name = "listing[country]" type="text" id="country" class="form-control" required></input>
+				<div class="invalid-feedback">Country name should be valid.</div>
+			</div>
+
+		</div>
+
+		<div class="mb-3">
+			<label for="location" class="form-label">Location</label>
+			<input value="<%= listing.location %>" name = "listing[location]" type="text" id="location" class="form-control" required></input>
+			<div class="invalid-feedback">Location should be valid.</div>
+		</div>
+
+		<br /><br>
+		<button class="btn btn-dark end-btn mt-3">Update the Listing</button>
+		<br><br>
+	</form>
+</div>
+</div>
+
